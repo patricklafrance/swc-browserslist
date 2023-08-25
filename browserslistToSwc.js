@@ -105,6 +105,8 @@ function parseResult(result) {
 }
 
 export function browserslistToSwc(options = {}) {
+    console.time("***************** browserslistToSwc");
+
     const {
         // @ts-ignore
         queries,
@@ -137,6 +139,8 @@ export function browserslistToSwc(options = {}) {
 
 
     console.log("*****************: ", targets);
+
+    console.timeEnd("***************** browserslistToSwc");
 
     return targets;
 }
