@@ -1,3 +1,5 @@
+// Inspired by https://github.com/marcofugaro/browserslist-to-esbuild/blob/main/src/index.js
+
 import browserslist from "browserslist";
 
 // FROM:
