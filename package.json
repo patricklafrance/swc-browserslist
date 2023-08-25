@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json.schemastore.org/package",
+  "name": "swc-browserslist",
+  "version": "0.0.1",
+  "author": "Patrick Lafrance",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "build": "rimraf dist && swc src -d dist",
+    "build-webpack": "webpack --config webpack.config.js",
+    "reset": "pnpm dlx rimraf node_modules",
+    "list-outdated-deps": "pnpm outdated -r --format list",
+    "update-outdated-deps": "pnpm update -r --latest"
+  },
+  "dependencies": {
+    "@swc/helpers": "0.5.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.15.0"
+  },
+  "devDependencies": {
+    "@swc/cli": "0.1.62",
+    "@swc/core": "1.3.78",
+    "@swc/helpers": "0.5.1",
+    "@types/node": "20.5.4",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "@types/webpack": "5.28.2",
+    "@typescript-eslint/parser": "6.4.1",
+    "@workleap/browserslist-config": "2.0.0",
+    "@workleap/eslint-plugin": "2.0.1",
+    "@workleap/swc-configs": "2.0.0",
+    "@workleap/typescript-configs": "3.0.0",
+    "browserslist": "4.21.10",
+    "eslint": "8.47.0",
+    "html-webpack-plugin": "5.5.3",
+    "rimraf": "^5.0.1",
+    "swc-loader": "0.2.3",
+    "typescript": "5.2.2",
+    "webpack": "5.88.2",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "4.15.1"
+  }
+}
