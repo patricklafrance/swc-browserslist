@@ -79,7 +79,7 @@ const SwcTargetMapping = {
     "op_mob": "opera"
 };
 
-function parseResult(result) {
+function parseBrowserslistResult(result) {
     // "chrome 11" --> ["chrome", "11"]
     const values = result.split(" ");
 
@@ -123,7 +123,7 @@ export function browserslistToSwc(options = {}) {
     console.log("*****************: ", results);
 
     const targets = results.reduce((acc, x) => {
-        const { target, version } = parseResult(x);
+        const { target, version } = parseBrowserslistResult(x);
 
         if (SupportedSwcTargets.indexOf(target) === -1) {
             return acc;
