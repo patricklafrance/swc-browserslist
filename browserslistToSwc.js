@@ -113,7 +113,7 @@ export function browserslistToSwc(options = {}) {
     const {
         // @ts-ignore
         queries,
-        // Will ignore path because it doesn't seem to work anyway
+        // Will ignore path because it doesn't seem to work anyway.
         path,
         ...browserlistsOptions
     } = options;
@@ -125,12 +125,12 @@ export function browserslistToSwc(options = {}) {
     const targets = results.reduce((acc, x) => {
         const { target, version } = parseBrowserslistResult(x);
 
-        // Exclude targets that are not supported by SWC
+        // Exclude targets that are not supported by SWC.
         if (SupportedSwcTargets.indexOf(target) === -1) {
             return acc;
         }
 
-        // Only keep the oldest version
+        // Only keep the oldest version.
         if (acc[target]) {
             if (parseFloat(acc[target]) > parseFloat(version)) {
                 acc[target] = version;
