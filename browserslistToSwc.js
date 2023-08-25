@@ -53,7 +53,7 @@ import browserslist from "browserslist";
 
 // Took the original list from browserslist-rs: https://github.dev/browserslist/browserslist-rs/blob/99a3244fc8c0e631a80a9cae5c41dca6c5a2aae5/build.rs
 // And then removed a few browsers that SWC is discarting: https://github.com/swc-project/swc/blob/main/crates/preset_env_base/src/lib.rs#L105
-const SupportedBrowsers = [
+const SupportedSwcTargets = [
     "ie",
     "edge",
     "firefox",
@@ -70,7 +70,7 @@ const SupportedBrowsers = [
 ];
 
 // Took from https://github.com/swc-project/swc/blob/main/crates/preset_env_base/src/lib.rs#L90
-const BrowsersMapping = {
+const SwcTargetMapping = {
     "and_chr": "chrome",
     "and_ff": "firefox",
     "ie_mob": "ie",
@@ -82,12 +82,12 @@ function parseResult(result) {
     // "chrome 11" --> ["chrome", "11"]
     const values = result.split(" ");
 
-    let browser = values[0];
+    let target = values[0];
     let version = values[1];
 
     // and_chr --> "chrome"
-    if (BrowsersMapping[browser]) {
-        browser = BrowsersMapping[browser];
+    if (SwcTargetMapping[target]) {
+        target = SwcTargetMapping[target];
     }
 
     // 11.0-12.0 --> 11.0
@@ -101,7 +101,7 @@ function parseResult(result) {
     }
 
     return {
-        browser,
+        target,
         version
     };
 }
@@ -122,18 +122,18 @@ export function browserslistToSwc(options = {}) {
     console.log("*****************: ", results);
 
     const targets = results.reduce((acc, x) => {
-        const { browser, version } = parseResult(x);
+        const { target, version } = parseResult(x);
 
-        if (SupportedBrowsers.indexOf(browser) === -1) {
+        if (SupportedSwcTargets.indexOf(target) === -1) {
             return acc;
         }
 
-        if (acc[browser]) {
-            if (parseFloat(acc[browser]) > parseFloat(version)) {
-                acc[browser] = version;
+        if (acc[target]) {
+            if (parseFloat(acc[target]) > parseFloat(version)) {
+                acc[target] = version;
             }
         } else {
-            acc[browser] = version;
+            acc[target] = version;
         }
 
         return acc;
