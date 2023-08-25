@@ -1,4 +1,5 @@
 // Inspired by https://github.com/marcofugaro/browserslist-to-esbuild/blob/main/src/index.js
+// We are doing this because browserslist-rs (which is used under the hood by SWC), doesn't support browserslist extends syntax: https://github.com/browserslist/browserslist-rs#limitations
 
 import browserslist from "browserslist";
 
